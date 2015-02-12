@@ -1,5 +1,6 @@
 package boletin20;
 
+import java.util.Iterator;
 import java.util.TreeMap;
 import javax.swing.JOptionPane;
 
@@ -10,7 +11,6 @@ import javax.swing.JOptionPane;
 public class Colegio {
 
     TreeMap<String, Alumno> alum = new TreeMap<>();
-    Alumno a = new Alumno();
     private static int reg = 5500;
 
     public int menu() {
@@ -31,10 +31,8 @@ public class Colegio {
 
             String n = JOptionPane.showInputDialog("Introducir Nombre");
             int nt = Integer.parseInt(JOptionPane.showInputDialog("Introducir Nota"));
-            a.setNombre(n);
-            a.setNota(nt);
             String r = String.valueOf(reg);
-            alum.put(r, a);
+            alum.put(r, new Alumno(n, nt));
             reg++;
             conf = JOptionPane.showConfirmDialog(null, "Dar de alta otro alumno?");
         } while (conf == 0);
@@ -48,13 +46,37 @@ public class Colegio {
             conf = JOptionPane.showConfirmDialog(null, "Dar de baja otro alumno?");
         } while (conf == 0);
     }
-    
-    public void consulta(){
-        
+
+    public void consulta() {
+        int conf;
+        do {
+            String r = JOptionPane.showInputDialog("Introducir Registro");
+            boolean x=alum.containsKey(r);
+            if(x){
+                JOptionPane.showMessageDialog(null,alum.get(r));
+            }else{
+                JOptionPane.showMessageDialog(null,"No existe el alumno con registro: " + r);
+            }
+            conf = JOptionPane.showConfirmDialog(null, "Consultar otro alumno?");
+        } while (conf == 0);
     }
-    
-    public void visualizar(){
-        
+
+    public void visualizar() {
+        String s = "";
+        /*
+         for (String r : alum.keySet()) {
+         s += r + "\nNombre: " + alum.get(r).getNombre() + alum.get(r).getNota()+"\n<----------->\n";
+         System.out.println(alum.get(r));
+         }
+         */
+        Iterator it = alum.keySet().iterator();
+        while (it.hasNext()) {
+            String clave = (String) it.next();
+            Alumno aux = alum.get(clave);
+            s += clave + aux + "\n<----------->\n";
+        }
+        JOptionPane.showMessageDialog(null, s);
+
     }
 
 }
