@@ -1,6 +1,4 @@
 
-
-
 package boletin20;
 
 /**
@@ -38,7 +36,7 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return " Alumno" + "\nNombre=" + nombre + ", \nNota=" + nota;
+        return " \nAlumno" + "\nNombre: " + nombre + "\nNota: " + nota;
     }
     
     

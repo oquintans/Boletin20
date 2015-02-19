@@ -12,6 +12,8 @@
  */
 package boletin20;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author oquintansocampo
@@ -24,20 +26,34 @@ public class Boletin20 {
     public static void main(String[] args) {
         Colegio b = new Colegio();
         int op;
+        boolean creado=false;
         do {
             op = b.menu();
             switch (op) {
                 case 1:
                     b.add();
+                    creado=true;
                     break;
                 case 2:
+                    if(creado){
                     b.remove();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Debes crear alumnos primero","ERROR!!",JOptionPane.WARNING_MESSAGE);
+                    }
                     break;
                 case 3:
+                    if(creado){
                     b.consulta();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Debes crear alumnos primero","ERROR!!",JOptionPane.WARNING_MESSAGE);
+                    }
                     break;
                 case 4:
+                    if(creado){
                     b.visualizar();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Debes crear alumnos primero","ERROR!!",JOptionPane.WARNING_MESSAGE);
+                    }
                     break;
                 case 5:
                     if (op == 5 && op == 0) {

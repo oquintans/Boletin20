@@ -45,9 +45,9 @@ public class Colegio {
             String r = JOptionPane.showInputDialog("Introducir Registro");
             boolean x = alum.containsKey(r);
             if (x) {
-                int p = JOptionPane.showConfirmDialog(null, "Seguro que quiere borrar al alumno " + r);
+                int p = JOptionPane.showConfirmDialog(null,alum.get(r)+"\nSeguro que quiere borrar al alumno?");
                 if (p == 0) {
-                    JOptionPane.showMessageDialog(null, alum.remove(r) + " ha sido borrado");
+                    JOptionPane.showMessageDialog(null, alum.remove(r) + " \nha sido borrado");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el alumno con registro: " + r);
